@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'home/index'
+    resources :snippets
 
     get 'home/index'
 
