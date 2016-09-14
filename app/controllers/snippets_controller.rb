@@ -7,6 +7,13 @@ class SnippetsController < ApplicationController
 	end
 
 	def create
-		render plain: params[:snippet].inspect
+		@snippet = Snippet.new(snippet_params)
+		@snippet.save
+		redirect_to @snippet
 	end
+
+	private
+		def snippet_params
+			params.require(:snippet).permit(:title, :text)
+		end
 end
