@@ -8,12 +8,17 @@ class SnippetsController < ApplicationController
 	end
 
 	def new
+		@snippet = Snippet.new
 	end
 
 	def create
 		@snippet = Snippet.new(snippet_params)
-		@snippet.save
-		redirect_to @snippet
+
+		if @snippet.save
+			redirect_to @snippet
+		else
+			render 'new'
+		end
 	end
 
 	private
