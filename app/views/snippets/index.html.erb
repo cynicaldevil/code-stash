@@ -4,12 +4,14 @@
 <tr>
 	<th>Title</th>
 	<th>Text</th>
+	<th colspan="2"></th>
 </tr>
 <%= @snippets.each do |snippet|  %>
 	<tr>
 		<td><%= snippet.title %></td>
 		<td><%= snippet.text %></td>
 		<td><%= link_to 'Show', snippet_path(snippet) %></td>
+		<td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
 	</tr>
 <% end %>
 </table>
