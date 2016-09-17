@@ -11,6 +11,10 @@ class SnippetsController < ApplicationController
 		@snippet = Snippet.new
 	end
 
+	def edit
+		@snippet = Snippet.find(params[:id])
+	end
+
 	def create
 		@snippet = Snippet.new(snippet_params)
 
@@ -18,6 +22,16 @@ class SnippetsController < ApplicationController
 			redirect_to @snippet
 		else
 			render 'new'
+		end
+	end
+
+	def update
+		@snippet = Snippet.find(params[:id])
+
+		if @snippet.update(snippet_params)
+			redirect_to @snippet
+		else
+			render 'edit'
 		end
 	end
 
