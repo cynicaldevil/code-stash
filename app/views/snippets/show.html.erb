@@ -10,5 +10,8 @@
 <h2>Comments</h2>
 <%= render @snippet.comments %>
 
+<h2>Add a comment: </h2>
+<%= render 'comments/form' %>
+
 <%= link_to 'Edit', edit_snippet_path(@snippet) %> |
 <%= link_to 'Back', snippets_path %>
