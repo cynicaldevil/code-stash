@@ -1,6 +1,7 @@
 class SnippetsController < ApplicationController
 	def index
 		@snippets = Snippet.all
+		render component: 'Snippets', props: { snippets: @snippets }
 	end
 
 	def show
