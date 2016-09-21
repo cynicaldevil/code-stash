@@ -13,6 +13,7 @@ class Snippets extends React.Component {
         });
         return (
             <div>
+                <a href={this.props.new_snippet_link} >New Snippet</a>
                 <h1>List all snippets</h1>
                 <table>
                     <tr>

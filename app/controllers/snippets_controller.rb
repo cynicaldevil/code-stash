@@ -1,7 +1,9 @@
 class SnippetsController < ApplicationController
 	def index
 		@snippets = Snippet.all
-		render component: 'Snippets', props: { snippets: @snippets }
+		new_snippet_link = new_snippet_path
+		render react_component: 'Snippets', props: { snippets: @snippets,
+                                                     new_snippet_link: @new_snippet_link }
 	end
 
 	def show
