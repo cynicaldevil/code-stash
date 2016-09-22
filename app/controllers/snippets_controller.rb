@@ -12,6 +12,7 @@ class SnippetsController < ApplicationController
 
 	def new
 		@snippet = Snippet.new
+		render react_component: 'Snippet_new', props: { snippet_index_link: snippets_path}
 	end
 
 	def edit
