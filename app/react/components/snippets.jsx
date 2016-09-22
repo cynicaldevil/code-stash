@@ -1,8 +1,15 @@
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 class Snippets extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    componentWillMount = () => {
+        injectTapEventPlugin();
     }
 
     render() {
@@ -14,6 +21,7 @@ class Snippets extends React.Component {
                 </tr>)
         });
         return (
+            <MuiThemeProvider>
             <div>
                 <a href={this.props.new_snippet_link} >New Snippet</a>
                 <h1>List all snippets</h1>
@@ -29,7 +37,9 @@ class Snippets extends React.Component {
                         {snippets}
                     </tbody>
                 </table>
+                <RaisedButton label="Default" />
             </div>
+            </MuiThemeProvider>
         );
     }
 }
