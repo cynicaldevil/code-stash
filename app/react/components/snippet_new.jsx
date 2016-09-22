@@ -1,5 +1,6 @@
 import React from 'react';
 import CodeMirror from 'react-codemirror';
+require('../../../node_modules/codemirror/lib/codemirror.css');
 
 class NewSnippet extends React.Component {
     constructor(props) {
@@ -23,8 +24,6 @@ class NewSnippet extends React.Component {
 
         return (
             <div>
-                Test!
-            {/* IMP TODO: fix style of codemirror component */}
                 <CodeMirror value={this.state.code} onChange={this.updateCode} options={options} />
             </div>
         );
