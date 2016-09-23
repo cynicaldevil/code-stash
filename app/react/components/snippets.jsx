@@ -37,7 +37,6 @@ class Snippets extends React.Component {
                         {snippets}
                     </tbody>
                 </table>
-                <RaisedButton label="Default" />
             </div>
             </MuiThemeProvider>
         );

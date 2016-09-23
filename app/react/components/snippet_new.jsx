@@ -25,6 +25,7 @@ class NewSnippet extends React.Component {
         return (
             <div>
                 <CodeMirror value={this.state.code} onChange={this.updateCode} options={options} />
+                <a href={this.props.snippet_index_link} >Back</a>
             </div>
         );
     }
