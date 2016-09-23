@@ -1,6 +1,6 @@
 import React from 'react';
 import CodeMirror from 'react-codemirror';
-require('../../../node_modules/codemirror/lib/codemirror.css');
+require('../../../../node_modules/codemirror/lib/codemirror.css');
 
 class NewSnippet extends React.Component {
     constructor(props) {

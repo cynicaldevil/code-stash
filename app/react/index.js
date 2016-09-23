@@ -1,8 +1,8 @@
 import RWR from 'react-webpack-rails';
 
-import Snippets from './components/snippets';
-import NewSnippet from './components/snippet_new';
+import SnippetsIndex from './components/snippets/index';
+import NewSnippet from './components/snippets/new';
 
-RWR.registerComponent('Snippets', Snippets);
-RWR.registerComponent('Snippet_new', NewSnippet);
+RWR.registerComponent('snippets', SnippetsIndex);
+RWR.registerComponent('new_snippet', NewSnippet);
 RWR.run();
