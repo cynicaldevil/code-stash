@@ -19,11 +19,39 @@ class Snippets extends React.Component {
             lineNumbers: true,
             readOnly: true,
         };
+
+        const styles = {
+            codemirror: {
+                width: 900,
+                border: '1px solid black',
+                margin: 10,
+                overflow: 'hidden'
+            }
+        };
+
         const snippets = this.props.snippets.map((snippet, index) => {
+
+            const code = snippet.text;
+            let i = 0, count = 0;
+            while(count < 10 && i < code.length) {
+                if(code.charAt(i) === '\n')
+                    count++;
+                i++;
+            }
+            const innerStyles = {
+                code: {
+                    ...styles.codemirror,
+                    height: count >= 10 ? 154 : ((count+1) * 15) + 8,
+                    cursor: 'pointer'
+                }
+            };
+
             return (
                 <div key={index}>
                     <div>{snippet.title}</div>
-                    <CodeMirror value={snippet.text} options={options} />
+                        <div style={innerStyles.code}>
+                            <CodeMirror value={snippet.text} options={options} />
+                        </div>
                 </div>)
         });
         return (
