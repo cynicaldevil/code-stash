@@ -24,13 +24,6 @@ class NewSnippet extends React.Component {
         });
     }
 
-    clearForm = () => {
-        this.setState({
-            title: '',
-            code: '// your code here...'
-        });
-    }
-
     submit = (e) => {
         e.preventDefault();
 
@@ -44,15 +37,11 @@ class NewSnippet extends React.Component {
         $.ajax({
             type: 'POST',
             url: '/snippets',
-            dataType: 'script/text',
             data: {snippet: snippet},
         })
         .done(() => {
-            this.clearForm();
             console.log('submitted!');
         })
-        // IMP TODO: POST request returns 200(OK), yet the fail callback
-        // is triggered
         .fail((err) => {
             console.log('failed to submit!', err);
         });
