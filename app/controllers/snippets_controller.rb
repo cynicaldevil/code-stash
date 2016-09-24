@@ -1,4 +1,5 @@
 class SnippetsController < ApplicationController
+	protect_from_forgery
 	def index
 		@snippets = Snippet.all
 		@new_snippet_link = new_snippet_path
