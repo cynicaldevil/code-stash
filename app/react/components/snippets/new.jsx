@@ -51,6 +51,12 @@ class NewSnippet extends React.Component {
         const options = {
             lineNumbers: true,
             readOnly: false
+        const styles = {
+            codemirror: {
+                margin: 10,
+                width: 900,
+                border: '1px solid black'
+            }
         };
 
         return (
@@ -58,7 +64,10 @@ class NewSnippet extends React.Component {
                 <form onSubmit={this.submit}>
                     <input type="text" defaultValue={this.state.title}
                     placeholder="Title..." onChange={this.updateTitle} />
-                    <CodeMirror value={this.state.code} onChange={this.updateCode} options={options} />
+                    <div style={styles.codemirror}>
+                        <CodeMirror value={this.state.code}
+                        onChange={this.updateCode} options={options} />
+                    </div>
                     <button type="submit">Submit</button>
                 </form>
             <a href={this.props.snippet_index_link} >Back</a>
