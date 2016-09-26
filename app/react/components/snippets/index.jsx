@@ -42,16 +42,23 @@ class Snippets extends React.Component {
                 code: {
                     ...styles.codemirror,
                     height: count >= 10 ? 154 : ((count+1) * 15) + 8,
+                    zIndex: 100,
                     cursor: 'pointer'
+                },
+                link: {
+                    display: 'block',
+                    textDecoration: 'none'
                 }
             };
 
             return (
                 <div key={index}>
                     <div>{snippet.title}</div>
+                    <a style={innerStyles.link} href="https://github.com">
                         <div style={innerStyles.code}>
                             <CodeMirror value={snippet.text} options={options} />
                         </div>
+                    </a>
                 </div>)
         });
         return (
