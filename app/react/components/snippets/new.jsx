@@ -1,14 +1,38 @@
 import React from 'react';
 import CodeMirror from 'react-codemirror';
 import $ from 'jquery';
+
 require('../../../../node_modules/codemirror/lib/codemirror.css');
+require('../../../../node_modules/codemirror/mode/jsx/jsx');
+require('../../../../node_modules/codemirror/mode/http/http');
+require('../../../../node_modules/codemirror/mode/javascript/javascript');
+
+const extUtil = {
+    determineLang: (fileName) => {
+        const reqString = '../../../../node_modules/codemirror/mode/';
+        const extArr = {
+            js: 'javascript',
+            jsx: 'jsx',
+            http: 'http'
+        };
+        let lang = '';
+        Object.keys(extArr).forEach((extension) => {
+            let regexObj = new RegExp(extension + '$', 'g');
+            if(regexObj.test(fileName)) {
+                lang = extArr[extension];
+            }
+        });
+        return lang;
+    }
+}
 
 class NewSnippet extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             title: '',
-            code: '// your code here...'
+            code: '// your code here...',
+            mode: ''
         };
     }
 
@@ -19,8 +43,11 @@ class NewSnippet extends React.Component {
     }
 
     updateTitle = (newTitle) => {
+        const fileName = newTitle.target.value;
+        const lang = extUtil.determineLang(fileName);
         this.setState({
-            title: newTitle.target.value
+            title: fileName,
+            mode: lang
         });
     }
 
@@ -50,7 +77,10 @@ class NewSnippet extends React.Component {
     render = () => {
         const options = {
             lineNumbers: true,
-            readOnly: false
+            readOnly: false,
+            mode: this.state.mode
+        };
+
         const styles = {
             codemirror: {
                 margin: 10,
