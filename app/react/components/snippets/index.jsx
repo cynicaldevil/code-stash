@@ -40,11 +40,6 @@ class Snippet extends React.Component {
                 height: count >= 10 ? 157: ((count+1) * 15) + 8,
                 cursor: 'pointer'
             },
-            link: {
-                display: 'block',
-                textDecoration: 'none',
-                width: 900
-            },
             title: {
                 fontFamily: `'Roboto Condensed', sans-serif`,
                 fontSize: 19,
@@ -66,11 +61,9 @@ class Snippet extends React.Component {
             <div style={styles.main}>
                 <div style={styles.title}>{snippet.title}</div>
                 <div style={styles.bar} />
-                <a style={styles.link} href="https://github.com">
-                    <div style={styles.code}>
-                        <CodeMirror value={code} options={options} />
-                    </div>
-                </a>
+                <div style={styles.code}>
+                    <CodeMirror value={code} options={options} />
+                </div>
             </div>
         );
     }
