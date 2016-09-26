@@ -37,6 +37,11 @@ class Snippets extends React.Component {
                 if(code.charAt(i) === '\n')
                     count++;
                 i++;
+        const styles = {
+            header: {
+                fontFamily: `'Roboto Condensed', sans-serif`,
+                fontWeight: 400,
+                letterSpacing: -1.7,
             }
             const innerStyles = {
                 code: {
@@ -64,8 +69,9 @@ class Snippets extends React.Component {
         return (
             <MuiThemeProvider>
             <div>
+                <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400" rel="stylesheet" />
                 <a href={this.props.new_snippet_link} >New Snippet</a>
-                <h1>List all snippets</h1>
+                <h1 style={styles.header}>List all snippets</h1>
                 <div>
                     {snippets}
                 </div>
