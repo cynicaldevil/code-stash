@@ -19,13 +19,18 @@ class Snippet extends React.Component {
             readOnly: true,
         };
 
-        const code = snippet.text;
+        let code = snippet.text;
         let i = 0, count = 0;
         while(count < 10 && i < code.length) {
             if(code.charAt(i) === '\n')
                 count++;
             i++;
+            if(count === 10)
+            {
+                code = code.substr(0, i);
+            }
         }
+
         const styles = {
             code: {
                 width: 900,
@@ -63,7 +68,7 @@ class Snippet extends React.Component {
                 <div style={styles.bar} />
                 <a style={styles.link} href="https://github.com">
                     <div style={styles.code}>
-                        <CodeMirror value={snippet.text} options={options} />
+                        <CodeMirror value={code} options={options} />
                     </div>
                 </a>
             </div>
