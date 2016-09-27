@@ -9,6 +9,7 @@ class SnippetsController < ApplicationController
 
 	def show
 		@snippet = Snippet.find(params[:id])
+		render react_component: 'show_snippet', props: { snippet: @snippet }
 	end
 
 	def new
