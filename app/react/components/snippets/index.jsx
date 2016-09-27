@@ -14,6 +14,11 @@ class Snippet extends React.Component {
 
         const snippet = this.props.snippet;
 
+        const link = {
+            show: '/snippets/' + snippet.id,
+            edit: '/snippets/' + snippet.id + '/edit'
+        };
+
         const options = {
             lineNumbers: true,
             readOnly: true,
@@ -42,9 +47,12 @@ class Snippet extends React.Component {
             },
             title: {
                 fontFamily: `'Roboto Condensed', sans-serif`,
+                width: 900,
                 fontSize: 19,
                 letterSpacing: -0.5,
-                color: '#001C57'
+                color: '#001C57',
+                display: 'flex',
+                justifyContent: 'space-between',
             },
             main: {
                 margin: 30
@@ -59,7 +67,13 @@ class Snippet extends React.Component {
         };
         return (
             <div style={styles.main}>
-                <div style={styles.title}>{snippet.title}</div>
+                <div style={styles.title}>
+                    <div>{snippet.title}</div>
+                    <div>
+                        <a href={link.show}>Show</a>
+                        <a href={link.edit}>Edit</a>
+                    </div>
+                </div>
                 <div style={styles.bar} />
                 <div style={styles.code}>
                     <CodeMirror value={code} options={options} />
