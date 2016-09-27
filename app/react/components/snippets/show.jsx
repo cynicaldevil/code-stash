@@ -1,7 +1,6 @@
 import React from 'react';
 
 import RaisedButton from 'material-ui/RaisedButton';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import CodeMirror from 'react-codemirror';
 require('../../../../node_modules/codemirror/lib/codemirror.css');
 require('../../../assets/stylesheets/codemirror-extend.css');

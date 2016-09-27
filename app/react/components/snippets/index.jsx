@@ -1,7 +1,6 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import CodeMirror from 'react-codemirror';
 require('../../../../node_modules/codemirror/lib/codemirror.css');
 
@@ -86,10 +85,6 @@ class Snippet extends React.Component {
 class Snippets extends React.Component {
     constructor(props) {
         super(props);
-    }
-
-    componentWillMount = () => {
-        injectTapEventPlugin();
     }
 
     render() {
