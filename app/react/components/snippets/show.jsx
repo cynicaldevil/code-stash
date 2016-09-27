@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ShowComment from '../comments/show';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import CodeMirror from 'react-codemirror';
@@ -18,6 +20,10 @@ class ShowSnippet extends React.Component {
             lineNumbers: true,
             readOnly: true,
         };
+
+        const comments = this.props.comments.map((comment, index) => {
+            return <ShowComment comment={comment} key={index} />;
+        });
 
         const styles = {
             code: {
@@ -67,7 +73,7 @@ class ShowSnippet extends React.Component {
                 <RaisedButton label='Edit' href={'/snippets/' + snippet.id + '/edit'}/>
                 <RaisedButton label='Back' href={'/snippets'}/>
 
-                <div styles={styles.comments}>
+                <div style={styles.comments}>
                     {comments}
                 </div>
             </div>
