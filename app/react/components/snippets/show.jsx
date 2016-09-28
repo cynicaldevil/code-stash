@@ -11,6 +11,22 @@ require('../../../assets/stylesheets/codemirror-extend.css');
 class Comments extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            userName: '',
+            comment: ''
+        };
+    }
+
+    updateTitle = (event) => {
+        this.setState({
+            title: event.target.value
+        });
+    }
+
+    updateComment = (event) => {
+        this.setState({
+            comment: event.target.value,
+        });
     }
 
     render () {
@@ -29,6 +45,23 @@ class Comments extends React.Component {
                 marginLeft: -15,
                 marginBottom: 0,
                 letterSpacing: -1
+            },
+            newComment: {
+                userName: {
+                    margin: 10,
+                    marginLeft: 20,
+                    marginTop: 20,
+                    marginBottom: 13,
+                    // height: 20,
+                    fontSize: 17,
+                    width: 400
+                },
+                comment: {
+                    marginLeft: 20,
+                    fontSize: 14,
+                    width: 800,
+                    height: 120
+                }
             }
         };
 
@@ -42,6 +75,23 @@ class Comments extends React.Component {
                 <p style={styles.title}>Comments:</p>
                 <div style={styles.comments}>
                     {comments}
+                </div>
+                <div style={styles.newComment}>
+                    <form onSubmit={this.submit}>
+                        <p style={styles.title}>Add a comment:</p>
+                        {/* TODO: user name should be automatically
+                            sent in POST request; implement this when 'users' resource is
+                        created */}
+                        <input style={styles.newComment.userName}
+                        type="text" defaultValue={this.state.userName}
+                        placeholder='Enter User Name...' onChange={this.updateTitle} />
+                        <div>
+                            <textarea placeholder='comment...' style={styles.newComment.comment}
+                            value={this.state.comment}
+                            onChange={this.updateComment} />
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
         );
