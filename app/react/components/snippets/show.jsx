@@ -8,6 +8,35 @@ import CodeMirror from 'react-codemirror';
 require('../../../../node_modules/codemirror/lib/codemirror.css');
 require('../../../assets/stylesheets/codemirror-extend.css');
 
+class Comments extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render () {
+
+        const styles = {
+            comments: {
+                border: '1px solid black'
+            }
+        };
+
+        const comments = this.props.comments.map((comment, index) => {
+            return <ShowComment comment={comment} key={index} />;
+        });
+
+
+        return (
+            <div style={styles.main}>
+                <p style={styles.title}>Comments:</p>
+                <div style={styles.comments}>
+                    {comments}
+                </div>
+            </div>
+        );
+    }
+}
+
 class ShowSnippet extends React.Component {
     constructor(props) {
         super(props);
@@ -20,10 +49,6 @@ class ShowSnippet extends React.Component {
             lineNumbers: true,
             readOnly: true,
         };
-
-        const comments = this.props.comments.map((comment, index) => {
-            return <ShowComment comment={comment} key={index} />;
-        });
 
         const styles = {
             code: {
@@ -59,10 +84,7 @@ class ShowSnippet extends React.Component {
                 background: 'linear-gradient(to right, #6294FF , white)',
                 marginBottom: 20,
                 marginTop: 5
-            },
-            comments: {
-                border: '1px solid black'
-            },
+            }
         };
 
         return (
@@ -86,10 +108,7 @@ class ShowSnippet extends React.Component {
                     <CodeMirror value={snippet.text} options={options} />
                 </div>
 
-
-                <div style={styles.comments}>
-                    {comments}
-                </div>
+                <Comments comments={this.props.comments} />
             </div>
             </MuiThemeProvider>
         );
