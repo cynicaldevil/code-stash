@@ -16,8 +16,19 @@ class Comments extends React.Component {
     render () {
 
         const styles = {
+            main: {
+                fontFamily: `'Roboto Condensed', sans-serif`,
+            },
             comments: {
-                border: '1px solid black'
+                // border: '1px solid black'
+                marginLeft: 10,
+                width: 900
+            },
+            title: {
+                fontSize: 23,
+                marginLeft: -15,
+                marginBottom: 0,
+                letterSpacing: -1
             }
         };
 
