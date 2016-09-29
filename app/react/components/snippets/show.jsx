@@ -34,11 +34,13 @@ class Comments extends React.Component {
         const styles = {
             main: {
                 fontFamily: `'Roboto Condensed', sans-serif`,
+                marginTop: 50
             },
             comments: {
                 // border: '1px solid black'
                 marginLeft: 10,
-                width: 900
+                width: 900,
+                lineHeight: '23px'
             },
             title: {
                 fontSize: 23,
@@ -47,6 +49,9 @@ class Comments extends React.Component {
                 letterSpacing: -1
             },
             newComment: {
+                main: {
+                    marginTop: 60
+                },
                 userName: {
                     margin: 10,
                     marginLeft: 20,
@@ -76,7 +81,7 @@ class Comments extends React.Component {
                 <div style={styles.comments}>
                     {comments}
                 </div>
-                <div style={styles.newComment}>
+                <div style={styles.newComment.main}>
                     <form onSubmit={this.submit}>
                         <p style={styles.title}>Add a comment:</p>
                         {/* TODO: user name should be automatically
@@ -137,7 +142,8 @@ class ShowSnippet extends React.Component {
                 }
             },
             main: {
-                margin: 30
+                margin: 30,
+                marginBottom: 100
             },
             bar: {
                 height: 2,
