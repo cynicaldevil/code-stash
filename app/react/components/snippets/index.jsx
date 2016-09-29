@@ -1,6 +1,8 @@
 import React from 'react';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import CodeMirror from 'react-codemirror';
 require('../../../../node_modules/codemirror/lib/codemirror.css');
 
@@ -45,13 +47,19 @@ class Snippet extends React.Component {
                 cursor: 'pointer'
             },
             title: {
-                fontFamily: `'Roboto Condensed', sans-serif`,
-                width: 900,
-                fontSize: 19,
-                letterSpacing: -0.5,
-                color: '#001C57',
-                display: 'flex',
-                justifyContent: 'space-between',
+                main: {
+                    fontFamily: `'Roboto Condensed', sans-serif`,
+                    width: 900,
+                    fontSize: 19,
+                    letterSpacing: -0.5,
+                    color: '#001C57',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                },
+                buttons: {
+                    marginRight: 5,
+                    width: 75
+                }
             },
             main: {
                 margin: 30
@@ -66,11 +74,15 @@ class Snippet extends React.Component {
         };
         return (
             <div style={styles.main}>
-                <div style={styles.title}>
+                <div style={styles.title.main}>
                     <div>{snippet.title}</div>
-                    <div>
-                        <a href={link.show}>Show</a>
-                        <a href={link.edit}>Edit</a>
+                    <div style={{display: 'flex'}}>
+                        <div style={styles.title.buttons}>
+                            <FlatButton label='Show' href={link.show}/>
+                        </div>
+                        <div style={styles.title.buttons}>
+                            <FlatButton label='Edit' href={link.edit}/>
+                        </div>
                     </div>
                 </div>
                 <div style={styles.bar} />
