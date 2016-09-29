@@ -4,6 +4,7 @@ import ShowComment from '../comments/show';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import CodeMirror from 'react-codemirror';
 require('../../../../node_modules/codemirror/lib/codemirror.css');
 require('../../../assets/stylesheets/codemirror-extend.css');
@@ -19,13 +20,37 @@ class Comments extends React.Component {
 
     updateTitle = (event) => {
         this.setState({
-            title: event.target.value
+            userName: event.target.value
         });
     }
 
     updateComment = (event) => {
         this.setState({
             comment: event.target.value,
+        });
+    }
+
+    submit = (e) => {
+        e.preventDefault();
+
+        /* TODO: add validation for comment */
+        const snippet_id = this.props.snippet_id;
+        let comment = {
+            commenter: this.state.userName,
+            body: this.state.comment,
+            snippet_id: snippet_id
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/snippets/' + snippet_id + '/comments',
+            data: {comment: comment},
+        })
+        .done(() => {
+            console.log('submitted!');
+        })
+        .fail((err) => {
+            console.log('failed to submit!', err);
         });
     }
 
@@ -66,6 +91,10 @@ class Comments extends React.Component {
                     fontSize: 14,
                     width: 800,
                     height: 120
+                },
+                button: {
+                    marginLeft: 735,
+                    marginTop: 10
                 }
             }
         };
@@ -95,7 +124,7 @@ class Comments extends React.Component {
                             value={this.state.comment}
                             onChange={this.updateComment} />
                         </div>
-                        <button type="submit">Submit</button>
+                        <RaisedButton type="submit" style={styles.newComment.button} label="Submit"/>
                     </form>
                 </div>
             </div>
@@ -175,7 +204,7 @@ class ShowSnippet extends React.Component {
                     <CodeMirror value={snippet.text} options={options} />
                 </div>
 
-                <Comments comments={this.props.comments} />
+                <Comments comments={this.props.comments} snippet_id={snippet.id}/>
             </div>
             </MuiThemeProvider>
         );
