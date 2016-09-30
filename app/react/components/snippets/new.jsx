@@ -1,6 +1,5 @@
 import React from 'react';
 import CodeMirror from 'react-codemirror';
-import $ from 'jquery';
 
 require('../../../../node_modules/codemirror/lib/codemirror.css');
 require('../../../../node_modules/codemirror/mode/jsx/jsx');
