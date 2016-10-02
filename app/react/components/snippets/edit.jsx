@@ -34,10 +34,11 @@ const extUtil = {
 class EditSnippet extends React.Component {
     constructor(props) {
         super(props);
+        const lang = extUtil.determineLang(props.snippet.title);
         this.state = {
             title: props.snippet.title,
             code: props.snippet.text,
-            mode: ''
+            mode: lang
         };
     }
 
