@@ -1,6 +1,11 @@
 import React from 'react';
 import CodeMirror from 'react-codemirror';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import FlatButton from 'material-ui/FlatButton';
+import FontIcon from 'material-ui/FontIcon';
+import RaisedButton from 'material-ui/RaisedButton';
+
 require('../../../../node_modules/codemirror/lib/codemirror.css');
 require('../../../../node_modules/codemirror/mode/jsx/jsx');
 require('../../../../node_modules/codemirror/mode/http/http');
@@ -30,7 +35,7 @@ class NewSnippet extends React.Component {
         super(props);
         this.state = {
             title: '',
-            code: '// your code here...',
+            code: '\n\n\n\n',
             mode: ''
         };
     }
@@ -84,23 +89,51 @@ class NewSnippet extends React.Component {
             codemirror: {
                 margin: 10,
                 width: 900,
-                border: '1px solid black'
+                border: '1px solid #CDCDCD'
+            },
+            custom: {
+                height: 900
+            },
+            title: {
+                fontSize: 15,
+                marginBottom: 15
+            },
+            header: {
+                fontFamily: `'Roboto Condensed', sans-serif`,
+                fontSize: 23,
+                letterSpacing: -1
+            },
+            main: {
+                margin: 20
+            },
+            submit: {
+                marginLeft: 818,
+                marginTop: 10
             }
         };
 
         return (
-            <div>
+            <MuiThemeProvider>
+            <div style={styles.main}>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet" />
+                <RaisedButton
+                label='Back to Snippets'
+                href={this.props.snippet_index_link}
+                icon={<FontIcon className="material-icons">first_page</FontIcon>}
+                />
+                <p style={styles.header}>New Snippet:</p>
                 <form onSubmit={this.submit}>
-                    <input type="text" defaultValue={this.state.title}
+                    <input style={styles.title} type="text" defaultValue={this.state.title}
                     placeholder="Title..." onChange={this.updateTitle} />
                     <div style={styles.codemirror}>
-                        <CodeMirror value={this.state.code}
+                        <CodeMirror style={styles.custom} value={this.state.code}
                         onChange={this.updateCode} options={options} />
                     </div>
-                    <button type="submit">Submit</button>
+                    <RaisedButton type="submit" style={styles.submit} label="Submit"/>
                 </form>
-            <a href={this.props.snippet_index_link} >Back</a>
             </div>
+            </MuiThemeProvider>
         );
     }
 }
