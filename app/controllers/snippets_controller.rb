@@ -21,6 +21,7 @@ class SnippetsController < ApplicationController
 
 	def edit
 		@snippet = Snippet.find(params[:id])
+		render react_component: 'edit_snippet', props: { snippet: @snippet }
 	end
 
 	def create
