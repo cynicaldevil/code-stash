@@ -150,8 +150,6 @@ class ShowSnippet extends React.Component {
                 width: 900,
                 border: '1px solid #CDCDCD',
                 margin: 10,
-                height: '100%',
-                overflow: 'hidden',
                 cursor: 'pointer'
             },
             title: {
