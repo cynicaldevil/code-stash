@@ -3,6 +3,9 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import {blue500} from 'material-ui/styles/colors';
+import FontIcon from 'material-ui/FontIcon';
+
 import CodeMirror from 'react-codemirror';
 require('../../../../node_modules/codemirror/lib/codemirror.css');
 
@@ -106,6 +109,12 @@ class Snippets extends React.Component {
                 fontFamily: `'Roboto Condensed', sans-serif`,
                 fontWeight: 400,
                 letterSpacing: -1.7,
+            },
+            newButton: {
+                margin: 15
+            },
+            main: {
+                marginBottom: 150,
             }
         };
 
@@ -115,9 +124,19 @@ class Snippets extends React.Component {
         });
         return (
             <MuiThemeProvider>
-            <div>
-                <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400" rel="stylesheet" />
-                <a href={this.props.new_snippet_link} >New Snippet</a>
+            <div style={styles.main}>
+                <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400"
+                rel="stylesheet"
+                />
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                rel="stylesheet"
+                />
+                <RaisedButton
+                label='New Snippet'
+                style={styles.newButton}
+                href={this.props.new_snippet_link}
+                icon={<FontIcon className="material-icons" color={blue500}>note_add</FontIcon>}
+                />
                 <h1 style={styles.header}>List all snippets</h1>
                 <div>
                     {snippets}
