@@ -56,6 +56,29 @@ class EditSnippet extends React.Component {
         });
     }
 
+    submit = (e) => {
+        e.preventDefault();
+
+        let self = this;
+
+        let snippet = {
+            title: this.state.title,
+            text: this.state.code
+        };
+
+        $.ajax({
+            type: 'PUT',
+            url: '/snippets/' + this.props.snippet.id,
+            data: {snippet: snippet},
+        })
+        .done(() => {
+            console.log('submitted!');
+        })
+        .fail((err) => {
+            console.log('failed to submit!', err);
+        });
+    }
+
     render () {
         const options = {
             lineNumbers: true,
