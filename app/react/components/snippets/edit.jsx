@@ -107,7 +107,8 @@ class EditSnippet extends React.Component {
                 marginBottom: 7
             },
             main: {
-                margin: 20
+                margin: 20,
+                marginBottom: 150
             },
             submit: {
                 marginLeft: 818,
