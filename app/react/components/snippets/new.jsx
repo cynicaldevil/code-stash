@@ -100,8 +100,9 @@ class NewSnippet extends React.Component {
             },
             header: {
                 fontFamily: `'Roboto Condensed', sans-serif`,
-                fontSize: 23,
-                letterSpacing: -1
+                fontSize: 25,
+                letterSpacing: -1,
+                marginBottom: 7
             },
             main: {
                 margin: 20
@@ -109,6 +110,13 @@ class NewSnippet extends React.Component {
             submit: {
                 marginLeft: 818,
                 marginTop: 10
+            },
+            bar: {
+                height: 2,
+                width: 1000,
+                background: 'linear-gradient(to right, #6294FF , white)',
+                marginBottom: 20,
+                marginTop: 5
             }
         };
 
@@ -123,6 +131,7 @@ class NewSnippet extends React.Component {
                 icon={<FontIcon className="material-icons">first_page</FontIcon>}
                 />
                 <p style={styles.header}>New Snippet:</p>
+                <div style={styles.bar} />
                 <form onSubmit={this.submit}>
                     <input style={styles.title} type="text" defaultValue={this.state.title}
                     placeholder="Title..." onChange={this.updateTitle} />
