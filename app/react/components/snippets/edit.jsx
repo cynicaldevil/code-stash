@@ -134,7 +134,7 @@ class EditSnippet extends React.Component {
                         <CodeMirror style={styles.custom} value={this.state.code}
                         onChange={this.updateCode} options={options} />
                     </div>
-                    <RaisedButton type="submit" style={styles.submit} label="Submit"/>
+                    <RaisedButton type="submit" style={styles.submit} label="Edit"/>
                 </form>
             </div>
             </MuiThemeProvider>
