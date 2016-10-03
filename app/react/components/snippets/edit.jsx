@@ -125,6 +125,13 @@ class EditSnippet extends React.Component {
         return (
             <MuiThemeProvider>
             <div style={styles.main}>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet" />
+                <RaisedButton
+                label='Back to Snippets'
+                href={this.props.snippet_index_link}
+                icon={<FontIcon className="material-icons">first_page</FontIcon>}
+                />
                 <p style={styles.header}>Edit Snippet:</p>
                 <div style={styles.bar} />
                 <form onSubmit={this.submit}>
