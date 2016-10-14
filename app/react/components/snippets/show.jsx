@@ -7,7 +7,9 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import CodeMirror from 'react-codemirror';
 require('../../../../node_modules/codemirror/lib/codemirror.css');
-require('../../../assets/stylesheets/codemirror-extend.css');
+// require('../../../assets/stylesheets/codemirror-extend.css');
+
+import styleCustom from '../../../assets/stylesheets/codemirror-extend.css';
 
 class Comments extends React.Component {
     constructor(props) {

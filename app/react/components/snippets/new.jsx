@@ -6,6 +6,8 @@ import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
 
+// import styleCustom from '../../../assets/stylesheets/codemirror-do-not-extend.css';
+
 require('../../../../node_modules/codemirror/lib/codemirror.css');
 require('../../../../node_modules/codemirror/mode/jsx/jsx');
 require('../../../../node_modules/codemirror/mode/http/http');
@@ -92,7 +94,8 @@ class NewSnippet extends React.Component {
                 border: '1px solid #CDCDCD'
             },
             custom: {
-                height: 900
+                // ...styleCustom,
+                // height: 900
             },
             title: {
                 fontSize: 15,
